@@ -1,0 +1,90 @@
+body{
+    background-color:rgb(230, 221, 221);
+    color:white;
+    letter-spacing:1.5px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+
+
+}
+
+.table{
+    width: 100%;
+    height: 100%;
+    padding: 20px 50px;
+}
+.th1{
+   color:#313133
+
+}
+
+table{
+    width:100%
+}
+
+td,th{
+    font-weight:bold;
+    cursor: pointer;
+    padding: 10px 10px;
+    border: 0.5px solid #606060;
+    letter-spacing:2px;
+}
+ th{
+    font-size: 21px;
+    background-color: #110985;
+ }
+
+ td{
+    font-size: 19px;
+    background-color: #ededf1;
+    color:#313133
+ }
+ #spancolor{
+    color: #454545;
+ }
+
+ tr:hover td{
+    background-color: #30303045;
+ }
+ .footer{
+    margin-top: 25px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+
+ }
+
+ button{
+    padding:7px 15px;
+    color: rgb(80, 77, 77);
+    background-color: transparent;
+    font-size: 20px;
+    cursor:pointer
+ }
+
+ button.active, button:hover{
+    background: linear-gradient(to bottom,#1303f7 0%,#111 100%);
+ }
+
+
+ .spinner {
+   border: 4px solid rgba(0, 0, 0, 0.1);
+   border-left-color: #7983ff;
+   border-radius: 50%;
+   width: 40px;
+   height: 40px;
+   animation: spin 1s linear infinite;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+ }
+ 
+ @keyframes spin {
+   to {
+     transform: rotate(360deg);
+   }
+ }
+ 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination In Javascript</title>
+    <link rel="stylesheet" href="table.css">
+</head>
+<body>
+    <div id="spinner" class="spinner" style="display: none;"></div>
+
+    
+    <div class="table">
+        <h2 class="th1">Teacher Table</h2> 
+        
+        <div class="show-entries"> 
+            <label for="page-size" style="color:#313133;">Enter Page-size:</label>
+            <select id="page-size">
+                <option value="10"selected >10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50" >50</option> 
+            </select>
+        </div>
+        <br>
+        
+        <table>
+            <thead class="thead">
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>TSCNumber</th>
+                <th>IDNumber</th>
+                <th>UserName</th>
+                <th>PHONENUMBER</th>
+                <th>EDUCATION-LEVEL</th>
+                <th>EMAIL</th> 
+            </thead>
+            <tbody id="tbody">
+                
+            </tbody>
+        </table>
+        <div class="footer">
+            <span id="spancolor">showing 1 to 10 of 500000 entries</span>
+            <div class="index_buttons">
+                
+                <button >&lt;First</button>
+                <button> &lt;&lt; Previous</button>
+                <button> Next &gt;&gt;</button>
+                <button>Last&gt;</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="table.js"></script>
+</body>
+</html>
