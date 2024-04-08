@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family: 'Poppins',sans-serif;
+            margin: 0%;
+            padding:0%
+        }
+        #icon{
+            width: 35px;
+            height: auto;
+            filter: brightness(100);
+        }
+        .sidemenu{
+            display: flex;
+            flex-direction: column;
+            background-color:rgb(189, 200, 202) ;
+            width: 20vw ;
+            min-height: 100vh;
+            position:fixed;
+            left:0;
+        }
+        .hd h1{
+            justify-content: flex-end;
+        }
+        .sidemenu ul{
+            justify-content: center;
+        }
+        .sidemenu .hd{
+            height: 10vh;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .sidemenu li{
+            color: white;
+            display:flex;
+            font-size: 24px;
+            align-items: center;
+            padding:10px 40px;
+        }
+        .sidemenu li:hover{
+            background-color: white;
+            color:rgb(57, 57, 201);
+        }
+        .container{
+            position: absolute;
+            right:0;
+            width:80vw;
+            height:100vh;
+            /* background:rgb(41, 26, 32) ; */
+            background: white;
+        }
+        .container .header{
+            position:fixed;
+            top: 0;
+            right:0;
+            width: 80vw;
+            height: 10vh;
+            background: white;
+            display:flex;
+            align-items: center;
+            justify-content:center;
+            box-shadow:0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+        .container .header .nav{
+            width:90%;
+            display:flex;
+            align-items:center;
+
+        }
+        .container .header .nav .search{
+            flex: 3;
+            display:flex;
+            justify-content:center;
+        }
+
+        .container .header .nav .search .column-select{
+           margin-right: 20px;
+           border-radius: 5px;
+           overflow: hidden;
+        }
+
+        .container .header .nav .search .relations-select{
+           margin-right: 20px;
+           border-radius: 5px;
+           overflow: hidden;
+        }
+
+        .container .header .nav .search .btn{
+           margin-right: 10px;
+        }
+
+       
+
+
+        .container .header .nav .search  input[type=text]{
+            border: none;
+            background: rgb(247, 244, 244);
+            padding: 10px;
+            width:200px;
+        }
+        
+        .container .header .nav .search  button{
+            width:40px;
+            height: 40px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content:center;
+        }
+        
+        .container .header .nav .search  button img{
+            width: 30px;
+            height: 30px;
+        }
+
+
+        .tscontainer {
+        margin-top: 10px;    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+         height: 90%; 
+       }
+
+
+
+
+
+
+
+        .table {
+   width: 100%;
+   /* height: 100%; */
+   padding: 20px 50px;
+}
+
+.th1 {
+   color: #313133;
+}
+
+table {
+   width: 100%;
+}
+
+td,
+th {
+   font-weight: bold;
+   cursor: pointer;
+   padding: 10px 10px;
+   border: 0.5px solid #606060;
+   letter-spacing: 2px;
+   
+   
+}
+
+th {
+   font-size: 12px;
+   background-color:rgb(113, 209, 233);
+   position: sticky; 
+   top:0px;
+   height: 2px; 
+}
+
+td {
+   font-size: 12px;
+   background-color: #ededf1;
+   color: #313133;
+}
+
+#spancolor {
+   color: #454545;
+}
+
+tr:hover td {
+   background-color: #30303045;
+}
+
+.footer {
+   margin-top: 25px;
+   font-size: 20px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+button {
+   padding: 5px 5px;
+   color: rgb(80, 77, 77);
+   background-color: transparent;
+   font-size: 15px;
+   cursor: pointer;
+}
+
+button.active,
+button:hover {
+    background: linear-gradient(to bottom, rgb(0, 238, 255) 0%, rgb(0, 238, 255) 100%);
+}
+
+.overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.5);
+   z-index: 1000;
+   display: none;
+}
+
+.spinner {
+   width: 40px;
+   height: 40px;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 1001;
+   animation: spin 1s linear infinite, lightUp 2s infinite;
+   background: 
+       radial-gradient(circle at 50% 0%, rgba(78, 11, 235, 0.4), transparent 4px),
+       radial-gradient(circle at 94% 23%, rgba(33, 12, 223, 0.4), transparent 4px),
+       radial-gradient(circle at 97% 50%, rgba(29, 14, 231, 0.4), transparent 4px),
+       radial-gradient(circle at 94% 77%, rgba(29, 11, 187, 0.4), transparent 4px),
+       radial-gradient(circle at 50% 100%, rgba(9, 51, 168, 0.4), transparent 4px),
+       radial-gradient(circle at 6% 77%, rgba(43, 16, 194, 0.4), transparent 4px),
+       radial-gradient(circle at 3% 50%, rgba(28, 31, 214, 0.4), transparent 4px),
+       radial-gradient(circle at 6% 23%, rgba(38, 17, 224, 0.4), transparent 4px);
+}
+
+@keyframes spin {
+   0% {
+       transform: translate(-50%, -50%) rotate(0deg);
+   }
+   100% {
+       transform: translate(-50%, -50%) rotate(360deg);
+   }
+}
+
+@keyframes lightUp {
+   0% {
+       background-position: 0 0;
+   }
+   100% {
+       background-position: 5px 5px;
+   }
+}
+
+.table-container {
+   width: 100%; 
+   height: 300px;
+   overflow: auto; 
+}
+.table{
+  height:400px;
+}
+
+   
+    </style>
+    <link rel="icon" type="image" href="images/global-education.png">
+</head>
+<body>
+    <div class="sidemenu">
+       <div class="hd">
+        <h1>Dashboard</h1>
+       </div> 
+       <ul>
+        <li><img src="images/teacher.png" id="icon" alt="">&nbsp;<a href="dashboard.html">Teacher</a></li>
+        <li><img src="images/icon-8.png" id="icon" alt="">&nbsp;<a href="dbchangepassword.html">Change Password</a></li>
+        <li><img src="images/logout.png" id="icon" alt="">&nbsp;<a href="Index.html">Logout</a></li>
+       </ul>
+    </div>
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class ="search">
+                    <select name="columns" class="column-select">
+                        <option value="">--Please choose a column--</option>
+                        <option value="first_name">First Name</option>
+                        <option value="last_name">Last Name</option>
+                        <option value="tsc_number">TSC Number</option>
+                        <option value="id_number">ID Number</option>
+                        <option value="username">UserName</option>
+                        <option value="phone_number">Phone Number</option>
+                        <option value="education_level">Education Level</option>
+                        <option value="email">Email</option>
+                      </select>
+                      <select name="relations" class="relations-select">
+                        <option value="">--Please choose relation--</option>
+                        <option value=":in:">In</option>
+                        <option value=":inn:">Is not null</option>
+                        <option value=":eq:">Equal to</option>
+                        <option value=":nq:">Not equal</option>
+                        <option value=":gt:">Greater than</option>
+                        <option value=":gte:">Greater than or equal to</option>
+                        <option value=":lt:">Lass than</option>
+                        <option value=":lte:">Less than or equal</option>
+                        <option value=":bt:">between</option>
+                        <option value=":sw:">startwith</option>
+                        <option value=":ew:">endswith</option>
+                        <option value=":lm:">contains</option>
+                      </select>
+                      <input type="text" class="btn" placeholder="Enter search item" > 
+                      <button type="submit" class="searchbtn"><img src="images/search-icon.png" alt=""></button>
+                </div>
+            </div>
+        </div> 
+        <div class="tscontainer">
+            <div id="overlay" class="overlay"></div>
+            <div id="spinner" class="spinner" style="display: none;"></div>
+            
+            <div class="table">
+                <h2 class="th1">Teacher Table</h2> 
+                
+                <div class="show-entries"> 
+                    <label for="page-size" style="color:#313133;">Enter Page-size:</label>
+                    <select id="page-size">
+                        <option value="10"selected >10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="40">40</option>
+                        <option value="50">50</option> 
+                    </select>
+                </div>
+                <br>
+                <div class="table-container">
+                <table>
+                    <thead class="thead">
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>TSC Number</th>
+                        <th>ID Number</th>
+                        <th>UserName</th>
+                        <th>Phone Number</th>
+                        <th>Education Level</th>
+                        <th>Email</th> 
+                    </thead>
+                    <tbody id="tbody">
+                        
+                    </tbody>
+                </table>
+                </div>
+                <div class="footer">
+                    <span id="spancolor">showing 1 to 10 of 500000 entries</span>
+                    <div class="index_buttons">
+                        <button >&lt;&lt;First</button>
+                        <button> &lt; Previous</button>
+                        <button> Next &gt;</button>
+                        <button>Last&gt;&gt;</button>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+
+    <script>
+
+//     document.addEventListener('DOMContentLoaded', function() {
+//     const pageSizeElement = document.getElementById('page-size');
+//     const firstButton = document.querySelector('.index_buttons button:nth-child(1)');
+//     const previousButton = document.querySelector('.index_buttons button:nth-child(2)');
+//     const nextButton = document.querySelector('.index_buttons button:nth-child(3)');
+//     const lastButton = document.querySelector('.index_buttons button:nth-child(4)');
+//     const spinner = document.getElementById('spinner');
+//     const overlay = document.getElementById('overlay');
+   
+
+//     let currentPage = 1;
+//     let pageSize = parseInt(pageSizeElement.value);
+//     fetchData(currentPage, pageSize);
+//     let totalRecords = 0;
+//     let totalPages = 0;
+
+//     function showSpinner() {
+//         spinner.style.display = 'block';
+//         overlay.style.display = 'block'; 
+//     }
+
+//     function hideSpinner() {
+//         spinner.style.display = 'none';
+//         overlay.style.display = 'none'; 
+//     }
+
+//     function updatePaginationText(page, totalPages, totalRecords) {
+//         const paginationText = document.querySelector('.footer span');
+//         paginationText.textContent = `showing page ${page} of ${totalPages} pages in ${totalRecords} entries`;
+//     }
+
+//     function fetchData(pageNumber, pageSize) {
+//         showSpinner();
+//         const baseURL = "http://172.20.94.28:4100/api/rest/teachers";
+//         const url = `${baseURL}?page=${pageNumber}&pageSize=${pageSize}`;
+
+//         fetch(url)
+//             .then(response => response.json())
+//             .then(data => {
+//                 const { totalRecords: total, pages, page, data: teachers } = data;
+//                 totalRecords = total;
+//                 totalPages = pages;
+
+//                 updatePaginationText(page, totalPages, totalRecords);
+
+//                 const tableBody = document.querySelector('#tbody');
+//                 tableBody.innerHTML = '';
+
+//                 teachers.forEach(teacher => {
+//                     const row = document.createElement('tr');
+//                     row.innerHTML = `
+//                         <td>${teacher.first_name}</td>
+//                         <td>${teacher.last_name}</td>
+//                         <td>${teacher.tsc_number}</td>
+//                         <td>${teacher.id_number}</td>
+//                         <td>${teacher.username}</td>
+//                         <td>${teacher.phone_number}</td>
+//                         <td>${teacher.education_level}</td>
+//                         <td>${teacher.email}</td>
+//                     `;
+//                     tableBody.appendChild(row);
+//                 });
+//             })
+//             .catch(error => console.error('Error fetching data:', error))
+//             .finally(() => {
+//                 hideSpinner();
+//             });
+//     }
+
+//     firstButton.addEventListener('click', function() {
+//         if(currentPage = 1){
+//         fetchData(currentPage, pageSize);
+//         firstButton.disabled = true;
+//         lastButton.disabled = false;
+//         }
+//     });
+
+//     previousButton.addEventListener('click', function() {
+//         if (currentPage > 1) {
+//             currentPage--;
+//             fetchData(currentPage, pageSize);
+//             nextButton.disabled = false;
+//             lastButton.disabled = false;
+//         }else if(currentPage == totalPages){
+//             lastButton.disabled = true;
+//         }else {
+//             previousButton.disabled = true;
+//             previousButton.removeClass('hover')
+//         }
+//     });
+
+//     nextButton.addEventListener('click', function() {
+//         if (currentPage < totalPages) { 
+//             currentPage++;
+//             fetchData(currentPage, pageSize);
+//             previousButton.disabled = false;
+//             firstButton.disabled = false;
+//         }else{
+//             nextButton.disabled = true;
+            
+//         }
+//     });
+
+//     lastButton.addEventListener('click', function() {
+//         lastButton.disabled = true;
+//         firstButton.disabled = false;
+//         currentPage = Math.ceil(totalRecords / pageSize);
+//         fetchData(currentPage, pageSize);
+     
+//     });
+
+//     pageSizeElement.addEventListener('change', function() {
+//         pageSize = parseInt(this.value);
+//         currentPage = 1;
+//         fetchData(currentPage, pageSize);
+//     });
+
+//     fetchData(currentPage, pageSize);
+// });
+//  document.querySelector('.searchbtn').addEventListener('click', function() {
+//                 var columnValue = document.querySelector('.column-select').value;
+//                 var relationValue = document.querySelector('.relations-select').value;
+//                 var searchItemValue = document.querySelector('.btn').value;
+
+//                 var concatenatedValue = columnValue + relationValue + searchItemValue;
+//                 console.log(concatenatedValue); 
+//             });
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const pageSizeElement = document.getElementById('page-size');
+    const firstButton = document.querySelector('.index_buttons button:nth-child(1)');
+    const previousButton = document.querySelector('.index_buttons button:nth-child(2)');
+    const nextButton = document.querySelector('.index_buttons button:nth-child(3)');
+    const lastButton = document.querySelector('.index_buttons button:nth-child(4)');
+    const spinner = document.getElementById('spinner');
+    const overlay = document.getElementById('overlay');
+
+    let currentPage = 1;
+    let pageSize = parseInt(pageSizeElement.value);
+    let totalRecords = 0;
+    let totalPages = 0;
+
+    function showSpinner() {
+        spinner.style.display = 'block';
+        overlay.style.display = 'block';
+    }
+
+    function hideSpinner() {
+        spinner.style.display = 'none';
+        overlay.style.display = 'none';
+    }
+
+    function updatePaginationText(page, totalPages, totalRecords) {
+        const paginationText = document.querySelector('.footer span');
+        paginationText.textContent = `showing page ${page} of ${totalPages} pages in ${totalRecords} entries`;
+    }
+
+    function fetchData(pageNumber, pageSize) {
+        showSpinner();
+        const baseURL = "http://172.20.94.28:4100/api/rest/teachers";
+        const url = `${baseURL}?page=${pageNumber}&pageSize=${pageSize}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const { totalRecords: total, pages, page, data: teachers } = data;
+                totalRecords = total;
+                totalPages = pages;
+
+                updatePaginationText(page, totalPages, totalRecords);
+
+                const tableBody = document.querySelector('#tbody');
+                tableBody.innerHTML = '';
+
+                teachers.forEach(teacher => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${teacher.first_name}</td>
+                        <td>${teacher.last_name}</td>
+                        <td>${teacher.tsc_number}</td>
+                        <td>${teacher.id_number}</td>
+                        <td>${teacher.username}</td>
+                        <td>${teacher.phone_number}</td>
+                        <td>${teacher.education_level}</td>
+                        <td>${teacher.email}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error))
+            .finally(() => {
+                hideSpinner();
+            });
+    }
+
+    firstButton.addEventListener('click', function() {
+        currentPage = 1;
+        fetchData(currentPage, pageSize);
+    });
+
+    previousButton.addEventListener('click', function() {
+        if (currentPage > 1) {
+            currentPage--;
+            fetchData(currentPage, pageSize);
+        }
+    });
+
+    nextButton.addEventListener('click', function() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            fetchData(currentPage, pageSize);
+        }
+    });
+
+    lastButton.addEventListener('click', function() {
+        currentPage = totalPages;
+        fetchData(currentPage, pageSize);
+    });
+
+    pageSizeElement.addEventListener('change', function() {
+        pageSize = parseInt(this.value);
+        currentPage = 1;
+        fetchData(currentPage, pageSize);
+    });
+
+    fetchData(currentPage, pageSize);
+
+    document.querySelector('.searchbtn').addEventListener('click', function() {
+        var columnValue = document.querySelector('.column-select').value;
+        var relationValue = document.querySelector('.relations-select').value;
+        var searchItemValue = document.querySelector('.btn').value;
+
+        var filter = `${columnValue}${relationValue}${searchItemValue}`;
+
+        const baseURL = "http://172.20.94.28:4100/api/rest/teachers";
+        const page = 1; 
+        const pageSize = parseInt(document.getElementById('page-size').value);
+        const url = `${baseURL}?page=${page}&pageSize=${pageSize}&filter=${filter}`;
+
+        showSpinner();
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const { totalRecords: total, pages, page, data: teachers } = data;
+                totalRecords = total;
+                totalPages = pages;
+
+                updatePaginationText(page, totalPages, totalRecords);
+
+                const tableBody = document.querySelector('#tbody');
+                tableBody.innerHTML = '';
+
+                teachers.forEach(teacher => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${teacher.first_name}</td>
+                        <td>${teacher.last_name}</td>
+                        <td>${teacher.tsc_number}</td>
+                        <td>${teacher.id_number}</td>
+                        <td>${teacher.username}</td>
+                        <td>${teacher.phone_number}</td>
+                        <td>${teacher.education_level}</td>
+                        <td>${teacher.email}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error))
+            .finally(() => {
+                hideSpinner();
+            });
+    });
+   
+
+});
+
+    </script>
+</body>
+
+</html>

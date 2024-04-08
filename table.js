@@ -83,8 +83,6 @@
 //     fetchData(currentPage, pageSize);
 // });
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
     const pageSizeElement = document.getElementById('page-size');
     const firstButton = document.querySelector('.index_buttons button:nth-child(1)');
@@ -92,18 +90,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextButton = document.querySelector('.index_buttons button:nth-child(3)');
     const lastButton = document.querySelector('.index_buttons button:nth-child(4)');
     const spinner = document.getElementById('spinner');
+    const overlay = document.getElementById('overlay');
+   
 
     let currentPage = 1;
     let pageSize = parseInt(pageSizeElement.value);
+    fetchData(currentPage, pageSize);
     let totalRecords = 0;
     let totalPages = 0;
 
     function showSpinner() {
         spinner.style.display = 'block';
+        overlay.style.display = 'block'; 
     }
 
     function hideSpinner() {
         spinner.style.display = 'none';
+        overlay.style.display = 'none'; 
     }
 
     function updatePaginationText(page, totalPages, totalRecords) {
@@ -112,8 +115,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function fetchData(pageNumber, pageSize) {
-        showSpinner(); 
-        const baseURL = "http://172.20.94.28:4100/api/rest/teachers";
+        showSpinner();
+        const baseURL = "http://localhost:4100/api/rest/teachers";
         const url = `${baseURL}?page=${pageNumber}&pageSize=${pageSize}`;
 
         fetch(url)
@@ -145,42 +148,65 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => console.error('Error fetching data:', error))
             .finally(() => {
-                hideSpinner(); 
+                hideSpinner();
             });
     }
 
     firstButton.addEventListener('click', function() {
-        currentPage = 1;
+        if(currentPage = 1){
         fetchData(currentPage, pageSize);
+        firstButton.disabled = true;
+        lastButton.disabled = false;
+        }
     });
 
     previousButton.addEventListener('click', function() {
         if (currentPage > 1) {
             currentPage--;
             fetchData(currentPage, pageSize);
+            nextButton.disabled = false;
+            lastButton.disabled = false;
+        }else if(currentPage == totalPages){
+            lastButton.disabled = true;
+        }else {
+            previousButton.disabled = true;
+            previousButton.removeClass('hover')
         }
     });
 
     nextButton.addEventListener('click', function() {
-        if (currentPage < totalPages) {
+        if (currentPage < totalPages) { 
             currentPage++;
             fetchData(currentPage, pageSize);
+            previousButton.disabled = false;
+            firstButton.disabled = false;
+        }else{
+            nextButton.disabled = true;
+            
         }
     });
 
     lastButton.addEventListener('click', function() {
-        currentPage = currentPage = Math.ceil(totalRecords / pageSize);
+        lastButton.disabled = true;
+        firstButton.disabled = false;
+        currentPage = Math.ceil(totalRecords / pageSize);
         fetchData(currentPage, pageSize);
+     
     });
 
     pageSizeElement.addEventListener('change', function() {
         pageSize = parseInt(this.value);
-        fetchData(1, pageSize);
+        currentPage = 1;
+        fetchData(currentPage, pageSize);
     });
 
-   
     fetchData(currentPage, pageSize);
 });
+
+
+
+
+
 
 
 

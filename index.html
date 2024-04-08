@@ -3,55 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagination In Javascript</title>
-    <link rel="stylesheet" href="table.css">
+    <title>Design by harrison</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="icon" type="image" href="images/global-education.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-YWznzLeyCcoiIWaz3IU9vnRa4mpxEJR9kHdVBce+sSvgHUQ+rdbmMZgqYH5T824xX1u1jwzSoaAhco+wrkphqA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
 </head>
 <body>
-    <div id="spinner" class="spinner" style="display: none;"></div>
-
-    
-    <div class="table">
-        <h2 class="th1">Teacher Table</h2> 
-        
-        <div class="show-entries"> 
-            <label for="page-size" style="color:#313133;">Enter Page-size:</label>
-            <select id="page-size">
-                <option value="10"selected >10</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-                <option value="40">40</option>
-                <option value="50" >50</option> 
-            </select>
-        </div>
-        <br>
-        
-        <table>
-            <thead class="thead">
-                <th>FirstName</th>
-                <th>LastName</th>
-                <th>TSCNumber</th>
-                <th>IDNumber</th>
-                <th>UserName</th>
-                <th>PHONENUMBER</th>
-                <th>EDUCATION-LEVEL</th>
-                <th>EMAIL</th> 
-            </thead>
-            <tbody id="tbody">
-                
-            </tbody>
-        </table>
-        <div class="footer">
-            <span id="spancolor">showing 1 to 10 of 500000 entries</span>
-            <div class="index_buttons">
-                
-                <button >&lt;First</button>
-                <button> &lt;&lt; Previous</button>
-                <button> Next &gt;&gt;</button>
-                <button>Last&gt;</button>
-            </div>
-        </div>
+  <div class="loginpage">
+    <div class="topic">
+      <img src="images/online.png">
+      <h1>Online Exam System</h1>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="table.js"></script>
+    <div class="container">
+       <form id="loginForm" action="">
+         <h1>Sign In</h1>
+         <div id="errorMessage" style="color: red;"></div>
+         <div id="successMessage" style="color: rgb(248, 247, 247); background-color: green;"></div>
+         <div class="form-group">
+             <label for="username">Enter UserName:</label>
+             <input type="text" id="username" class="form-control" required>
+         </div>
+         <div class="form-group">
+          <label for="password">Enter Password:</label>
+          <div class="password-wrapper">
+              <input type="password" id="password" class="form-control" required>
+              <i id="togglePassword" class="far fa-eye"></i>
+          </div>
+      </div>
+      
+        
+         <input type="submit" id="submitButton" class="btn" value="SIGN IN">
+     </form>
+    </div>
+  </div>  
+    <script>
+
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+  event.preventDefault(); 
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+
+  var formData = new FormData();
+  formData.append("username", username);
+  formData.append("password", password);
+
+  fetch("http://172.20.94.28:4100/api/rest/login/teacher", {
+    method: "PUT",
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.error) {
+      if (data.error === "Invalid username") {
+        document.getElementById("errorMessage").textContent = "Invalid username";
+      } else if (data.error === "Invalid password") {
+        document.getElementById("errorMessage").textContent = "Invalid password.";
+      } else {
+        document.getElementById("errorMessage").textContent = data.error;  
+      }
+    } else {
+     document.getElementById("successMessage").textContent = "Login successful, welcome!";
+      
+      setTimeout(() => window.location.href = "dashboard.html", 9000);  
+      localStorage.setItem("token", data.token);
+      window.location.href = "dashboard.html";
+    }
+  })
+  .catch(error => {
+    console.error("Error:", error);
+    document.getElementById("errorMessage").textContent = "Server error";
+  });
+});
+
+
+document.getElementById("togglePassword").addEventListener("click", function() {
+    var passwordField = document.getElementById("password");
+    var icon = document.getElementById("togglePassword");
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+    } else {
+        passwordField.type = "password";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+    }
+});
+
+
+
+
+  </script>
 </body>
 </html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    #sidebar {
+        width: 250px;
+        background-color: #333;
+        height: 100vh;
+        color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow-y: auto;
+    }
+
+    #sidebar ul {
+        padding: 0;
+        list-style-type: none;
+    }
+
+    #sidebar ul li {
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    #content {
+        margin-left: 250px;
+        padding: 20px;
+    }
+
+    #changePasswordForm {
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+    <ul>
+        <li id="changePasswordLink">Change Password</li>
+        <!-- Add more sidebar links here if needed -->
+    </ul>
+</div>
+
+<div id="content">
+    <div id="changePasswordForm">
+        <h2>Change Password</h2>
+        <form id="passwordForm">
+            <label for="currentPassword">Current Password:</label><br>
+            <input type="password" id="currentPassword" name="currentPassword"><br><br>
+            <label for="newPassword">New Password:</label><br>
+            <input type="password" id="newPassword" name="newPassword"><br><br>
+            <label for="confirmPassword">Confirm New Password:</label><br>
+            <input type="password" id="confirmPassword" name="confirmPassword"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+
+<script>
+    const changePasswordLink = document.getElementById('changePasswordLink');
+    const changePasswordForm = document.getElementById('changePasswordForm');
+
+    changePasswordLink.addEventListener('click', function() {
+        changePasswordForm.style.display = 'block';
+    });
+
+    const passwordForm = document.getElementById('passwordForm');
+
+    passwordForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Add your password change logic here
+        alert('Password changed successfully!');
+        // Reset form fields
+        passwordForm.reset();
+        // Hide the form again
+        changePasswordForm.style.display = 'none';
+    });
+</script>
+
+</body>
+</html>
