@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Design by harrison</title>
-    <link rel="stylesheet" href="login.css">
-    <link rel="icon" type="image" href="images/global-education.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-YWznzLeyCcoiIWaz3IU9vnRa4mpxEJR9kHdVBce+sSvgHUQ+rdbmMZgqYH5T824xX1u1jwzSoaAhco+wrkphqA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-
+    <link rel="stylesheet" href="CSS/login.css">
+    <link rel="icon" type="image" href="Static_files/images/global-education.png">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-YWznzLeyCcoiIWaz3IU9vnRa4mpxEJR9kHdVBce+sSvgHUQ+rdbmMZgqYH5T824xX1u1jwzSoaAhco+wrkphqA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"> -->
+  
 </head>
 <body>
   <div class="loginpage">
     <div class="topic">
-      <img src="images/online.png">
+      <img src="Static_files/images/online.png">
       <h1>Online Exam System</h1>
     </div>
     <div class="container">
@@ -23,10 +24,12 @@
          <div id="successMessage" style="color: rgb(248, 247, 247); background-color: green;"></div>
          <div class="form-group">
              <label for="username">Enter UserName:</label>
+             <div id="usernameerrorMessage" style="color: red;"></div>
              <input type="text" id="username" class="form-control" required>
          </div>
          <div class="form-group">
           <label for="password">Enter Password:</label>
+          <div id="passworderrorMessage" style="color: red;"></div>
           <div class="password-wrapper">
               <input type="password" id="password" class="form-control" required>
               <i id="togglePassword" class="far fa-eye"></i>
@@ -38,7 +41,7 @@
      </form>
     </div>
   </div>  
-    <script>
+    <!-- <script>
 
     document.getElementById("loginForm").addEventListener("submit", function(event) {
   event.preventDefault(); 
@@ -57,9 +60,9 @@
   .then(data => {
     if (data.error) {
       if (data.error === "Invalid username") {
-        document.getElementById("errorMessage").textContent = "Invalid username";
-      } else if (data.error === "Invalid password") {
-        document.getElementById("errorMessage").textContent = "Invalid password.";
+        document.getElementById("usernameerrorMessage").textContent = "Invalid username";
+      } else if (data.error === "successMessage") {
+        document.getElementById("passworderrorMessage").textContent = "Invalid password.";
       } else {
         document.getElementById("errorMessage").textContent = data.error;  
       }
@@ -90,11 +93,9 @@ document.getElementById("togglePassword").addEventListener("click", function() {
         icon.classList.remove("fa-eye");
         icon.classList.add("fa-eye-slash");
     }
-});
+}); -->
 
-
-
-
-  </script>
+  <!-- </script> -->
+  <script src="Javascript/login.js"></script>
 </body>
 </html>

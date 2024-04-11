@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
+    <title>Dashboard development on progress</title>
+    <link rel="stylesheet" href="CSS/dashboard.css">
+    <!-- <style>
         *{
             font-family: 'Poppins',sans-serif;
             margin: 0%;
@@ -13,12 +14,11 @@
         #icon{
             width: 35px;
             height: auto;
-            filter: brightness(100);
         }
         .sidemenu{
             display: flex;
             flex-direction: column;
-            background-color:rgb(189, 200, 202) ;
+            background-color:rgb(244, 245, 245) ;
             width: 20vw ;
             min-height: 100vh;
             position:fixed;
@@ -42,11 +42,17 @@
             font-size: 24px;
             align-items: center;
             padding:10px 40px;
+            margin-left: 15px;
         }
         .sidemenu li:hover{
             background-color: white;
+            border-radius: 20px;
+            width: 12vw;
             color:rgb(57, 57, 201);
+            margin-left: 15px;
         }
+
+        
         .container{
             position: absolute;
             right:0;
@@ -138,6 +144,7 @@
    width: 100%;
    /* height: 100%; */
    padding: 20px 50px;
+   border-radius: 20px;
 }
 
 .th1 {
@@ -146,6 +153,7 @@
 
 table {
    width: 100%;
+   
 }
 
 td,
@@ -171,6 +179,7 @@ td {
    font-size: 12px;
    background-color: #ededf1;
    color: #313133;
+   
 }
 
 #spancolor {
@@ -189,12 +198,19 @@ tr:hover td {
    align-items: center;
 }
 
-button {
+button{
    padding: 5px 5px;
    color: rgb(80, 77, 77);
    background-color: transparent;
    font-size: 15px;
    cursor: pointer;
+}
+#page-input {
+    padding: 5px 5px;
+   color: rgb(80, 77, 77);
+   background-color: transparent;
+   font-size: 15px;
+   cursor: pointer; 
 }
 
 button.active,
@@ -260,9 +276,89 @@ button:hover {
   height:400px;
 }
 
+
+
+body {
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: #f2f2f2;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidenav a:hover {
+            color: #181616;
+        }
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        #main {
+    transition: margin-right .5s;
+    padding: 16px;
+  }
+  .bottom-buttons {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+  .bottom-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #5e6364;
+    color: white;
+    margin-left: 10px;
+  }
+  .bottom-buttons button:hover {
+    background-color: #08beec;
+  }
+  .field-group {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin-bottom: 10px;
+  }
+  .field-group select,
+  .field-group input[type="text"] {
+    margin: 0 5px; 
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+
    
-    </style>
-    <link rel="icon" type="image" href="images/global-education.png">
+    </style> -->
+    <link rel="icon" type="image" href="Static_files/images/global-education.png">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous">
+ -->
+ <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-YWznzLeyCcoiIWaz3IU9vnRa4mpxEJR9kHdVBce+sSvgHUQ+rdbmMZgqYH5T824xX1u1jwzSoaAhco+wrkphqA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous">
+
+
 </head>
 <body>
     <div class="sidemenu">
@@ -270,15 +366,19 @@ button:hover {
         <h1>Dashboard</h1>
        </div> 
        <ul>
-        <li><img src="images/teacher.png" id="icon" alt="">&nbsp;<a href="dashboard.html">Teacher</a></li>
-        <li><img src="images/icon-8.png" id="icon" alt="">&nbsp;<a href="dbchangepassword.html">Change Password</a></li>
-        <li><img src="images/logout.png" id="icon" alt="">&nbsp;<a href="Index.html">Logout</a></li>
+        <li><img src="Static_files/images/blue-teacher-icon.png" id="icon" alt="">&nbsp;<a href="dashboard.html" style="font-size:14px;">Teacher</a></li>
+        <li><img src="Static_files/images/change-password-icon.png" id="icon" alt="">&nbsp;<a href="dbchangepassword.html" style="font-size:14px;">Change Password</a></li>
+        <li><img src="Static_files/images/logout-icon.png" id="icon" alt="">&nbsp;<a href="index.html" style="font-size:14px;">Logout</a></li>
        </ul>
     </div>
     <div class="container">
         <div class="header">
             <div class="nav">
                 <div class ="search">
+                    <span style="font-size:30px;cursor:pointer ;" onclick="openNav()">
+                        <i class="fas fa-filter" style="color: #08beec; margin-right: 60px;"></i>
+                      </span>
+
                     <select name="columns" class="column-select">
                         <option value="">--Please choose a column--</option>
                         <option value="first_name">First Name</option>
@@ -306,7 +406,9 @@ button:hover {
                         <option value=":lm:">contains</option>
                       </select>
                       <input type="text" class="btn" placeholder="Enter search item" > 
-                      <button type="submit" class="searchbtn"><img src="images/search-icon.png" alt=""></button>
+                      <button type="submit" class="searchbtn"><img src="Static_files/images/search-icon.png" alt=""></button>
+
+                      
                 </div>
             </div>
         </div> 
@@ -347,6 +449,7 @@ button:hover {
                 </div>
                 <div class="footer">
                     <span id="spancolor">showing 1 to 10 of 500000 entries</span>
+                    <input type="number" id="page-input" placeholder="Page No" style="width: 80px;">
                     <div class="index_buttons">
                         <button >&lt;&lt;First</button>
                         <button> &lt; Previous</button>
@@ -357,144 +460,57 @@ button:hover {
             </div>  
         </div>
     </div>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <form id="form">
+          <div id="fieldsContainer">
+           
+            <div class="field-group">
+              <select name="select1">
+                <option value="">columns</option>
+                <option value="first_name">First Name</option>
+                <option value="last_name">Last Name</option>
+                <option value="tsc_number">TSC Number</option>
+                <option value="id_number">ID Number</option>
+                <option value="username">UserName</option>
+                <option value="phone_number">Phone Number</option>
+                <option value="education_level">Education Level</option>
+                <option value="email">Email</option>
+              </select>
+              <select name="select2">
+                <option value="">relation</option>
+                <option value=":in:">In</option>
+                <option value=":inn:">Is not null</option>
+                <option value=":eq:">Equal to</option>
+                <option value=":nq:">Not equal</option>
+                <option value=":gt:">Greater than</option>
+                <option value=":gte:">Greater than or equal to</option>
+                <option value=":lt:">Lass than</option>
+                <option value=":lte:">Less than or equal</option>
+                <option value=":bt:">between</option>
+                <option value=":sw:">startwith</option>
+                <option value=":ew:">endswith</option>
+                <option value=":lm:">contains</option>
+              </select>
+              <input type="text" name="textfield1" placeholder="enter search value">
+              <select name="select3">
+                <option value="">Joiner</option>
+                <option value="%7CAND%7C">AND</option>
+                <option value="%7COR%7C">OR</option>
+                <option value="NULL">NULL</option>
+              </select>
+            </div>
+          </div>
+          <div class="bottom-buttons" id="bottomButtons">
+            <button type="button" onclick="addField()">Add Filter</button>
+            <button type="submit">Submit</button>
+            <button type="button" onclick="deleteFields()">Delete</button>
+          </div>
+        </form>
+      </div>
+      
 
-    <script>
-
-//     document.addEventListener('DOMContentLoaded', function() {
-//     const pageSizeElement = document.getElementById('page-size');
-//     const firstButton = document.querySelector('.index_buttons button:nth-child(1)');
-//     const previousButton = document.querySelector('.index_buttons button:nth-child(2)');
-//     const nextButton = document.querySelector('.index_buttons button:nth-child(3)');
-//     const lastButton = document.querySelector('.index_buttons button:nth-child(4)');
-//     const spinner = document.getElementById('spinner');
-//     const overlay = document.getElementById('overlay');
-   
-
-//     let currentPage = 1;
-//     let pageSize = parseInt(pageSizeElement.value);
-//     fetchData(currentPage, pageSize);
-//     let totalRecords = 0;
-//     let totalPages = 0;
-
-//     function showSpinner() {
-//         spinner.style.display = 'block';
-//         overlay.style.display = 'block'; 
-//     }
-
-//     function hideSpinner() {
-//         spinner.style.display = 'none';
-//         overlay.style.display = 'none'; 
-//     }
-
-//     function updatePaginationText(page, totalPages, totalRecords) {
-//         const paginationText = document.querySelector('.footer span');
-//         paginationText.textContent = `showing page ${page} of ${totalPages} pages in ${totalRecords} entries`;
-//     }
-
-//     function fetchData(pageNumber, pageSize) {
-//         showSpinner();
-//         const baseURL = "http://172.20.94.28:4100/api/rest/teachers";
-//         const url = `${baseURL}?page=${pageNumber}&pageSize=${pageSize}`;
-
-//         fetch(url)
-//             .then(response => response.json())
-//             .then(data => {
-//                 const { totalRecords: total, pages, page, data: teachers } = data;
-//                 totalRecords = total;
-//                 totalPages = pages;
-
-//                 updatePaginationText(page, totalPages, totalRecords);
-
-//                 const tableBody = document.querySelector('#tbody');
-//                 tableBody.innerHTML = '';
-
-//                 teachers.forEach(teacher => {
-//                     const row = document.createElement('tr');
-//                     row.innerHTML = `
-//                         <td>${teacher.first_name}</td>
-//                         <td>${teacher.last_name}</td>
-//                         <td>${teacher.tsc_number}</td>
-//                         <td>${teacher.id_number}</td>
-//                         <td>${teacher.username}</td>
-//                         <td>${teacher.phone_number}</td>
-//                         <td>${teacher.education_level}</td>
-//                         <td>${teacher.email}</td>
-//                     `;
-//                     tableBody.appendChild(row);
-//                 });
-//             })
-//             .catch(error => console.error('Error fetching data:', error))
-//             .finally(() => {
-//                 hideSpinner();
-//             });
-//     }
-
-//     firstButton.addEventListener('click', function() {
-//         if(currentPage = 1){
-//         fetchData(currentPage, pageSize);
-//         firstButton.disabled = true;
-//         lastButton.disabled = false;
-//         }
-//     });
-
-//     previousButton.addEventListener('click', function() {
-//         if (currentPage > 1) {
-//             currentPage--;
-//             fetchData(currentPage, pageSize);
-//             nextButton.disabled = false;
-//             lastButton.disabled = false;
-//         }else if(currentPage == totalPages){
-//             lastButton.disabled = true;
-//         }else {
-//             previousButton.disabled = true;
-//             previousButton.removeClass('hover')
-//         }
-//     });
-
-//     nextButton.addEventListener('click', function() {
-//         if (currentPage < totalPages) { 
-//             currentPage++;
-//             fetchData(currentPage, pageSize);
-//             previousButton.disabled = false;
-//             firstButton.disabled = false;
-//         }else{
-//             nextButton.disabled = true;
-            
-//         }
-//     });
-
-//     lastButton.addEventListener('click', function() {
-//         lastButton.disabled = true;
-//         firstButton.disabled = false;
-//         currentPage = Math.ceil(totalRecords / pageSize);
-//         fetchData(currentPage, pageSize);
-     
-//     });
-
-//     pageSizeElement.addEventListener('change', function() {
-//         pageSize = parseInt(this.value);
-//         currentPage = 1;
-//         fetchData(currentPage, pageSize);
-//     });
-
-//     fetchData(currentPage, pageSize);
-// });
-//  document.querySelector('.searchbtn').addEventListener('click', function() {
-//                 var columnValue = document.querySelector('.column-select').value;
-//                 var relationValue = document.querySelector('.relations-select').value;
-//                 var searchItemValue = document.querySelector('.btn').value;
-
-//                 var concatenatedValue = columnValue + relationValue + searchItemValue;
-//                 console.log(concatenatedValue); 
-//             });
-
-
-
-
-
-
-
-
+    <!-- <script>
 
 document.addEventListener('DOMContentLoaded', function() {
     const pageSizeElement = document.getElementById('page-size');
@@ -504,6 +520,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const lastButton = document.querySelector('.index_buttons button:nth-child(4)');
     const spinner = document.getElementById('spinner');
     const overlay = document.getElementById('overlay');
+    const pageInput = document.getElementById('page-input');
+    
 
     let currentPage = 1;
     let pageSize = parseInt(pageSizeElement.value);
@@ -563,6 +581,28 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
+    
+
+    function jumpToPage() {
+        const page = parseInt(pageInput.value);
+        if (!isNaN(page) && page >= 1 && page <= totalPages) {
+            currentPage = page;
+            fetchData(currentPage, pageSize);
+        } else {
+            alert('Please enter a valid page number.');
+        }
+    }
+
+    
+    pageInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            jumpToPage();
+        }
+    });
+
+
+
+
     firstButton.addEventListener('click', function() {
         currentPage = 1;
         fetchData(currentPage, pageSize);
@@ -595,57 +635,256 @@ document.addEventListener('DOMContentLoaded', function() {
 
     fetchData(currentPage, pageSize);
 
+    
     document.querySelector('.searchbtn').addEventListener('click', function() {
-        var columnValue = document.querySelector('.column-select').value;
-        var relationValue = document.querySelector('.relations-select').value;
-        var searchItemValue = document.querySelector('.btn').value;
+    var columnValue = document.querySelector('.column-select').value;
+    var relationValue = document.querySelector('.relations-select').value;
+    var searchItemValue = document.querySelector('.btn').value;
 
-        var filter = `${columnValue}${relationValue}${searchItemValue}`;
+    var filter = `${columnValue}${relationValue}${searchItemValue}`;
 
-        const baseURL = "http://172.20.94.28:4100/api/rest/teachers";
-        const page = 1; 
-        const pageSize = parseInt(document.getElementById('page-size').value);
-        const url = `${baseURL}?page=${page}&pageSize=${pageSize}&filter=${filter}`;
+    const baseURL = "http://172.20.94.28:4100/api/rest/teachers";
+    const page = 1; 
+    const pageSize = parseInt(document.getElementById('page-size').value);
+    const url = `${baseURL}?page=${page}&pageSize=${pageSize}&filter=${filter}`;
 
+    showSpinner();
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const { totalRecords: total, pages, page } = data;
+            totalRecords = total;
+            totalPages = pages;
+
+            updatePaginationText(page, totalPages, totalRecords);
+
+            
+            let teachersData = data.data; 
+            let teachers = Array.isArray(teachersData) ? teachersData : [teachersData];
+
+            const tableBody = document.querySelector('#tbody');
+            tableBody.innerHTML = '';
+
+            teachers.forEach(teacher => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${teacher.first_name}</td>
+                    <td>${teacher.last_name}</td>
+                    <td>${teacher.tsc_number}</td>
+                    <td>${teacher.id_number}</td>
+                    <td>${teacher.username}</td>
+                    <td>${teacher.phone_number}</td>
+                    <td>${teacher.education_level}</td>
+                    <td>${teacher.email}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            alert('An error occurred while fetching data');
+        })
+        .finally(() => {
+            hideSpinner();
+        });
+});
+   
+
+});
+
+
+
+var fieldIndex = 1; 
+
+function openNav() {
+    var sidenav = document.getElementById("mySidenav");
+    
+    if (sidenav.style.width === "650px") {
+        sidenav.style.width = "0";
+    } else {
+        sidenav.style.width = "650px";
+        adjustSideNavHeight(); 
+    }
+}
+
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+     
+  }
+
+  function addField() {
+    fieldIndex++;
+    var container = document.getElementById("fieldsContainer");
+    var fieldDiv = document.createElement("div");
+    fieldDiv.classList.add("field-group"); 
+    fieldDiv.innerHTML = `
+      <select name="select${fieldIndex}">
+        <option value="">columns</option>
+        <option value="first_name">First Name</option>
+        <option value="last_name">Last Name</option>
+        <option value="tsc_number">TSC Number</option>
+        <option value="id_number">ID Number</option>
+        <option value="username">UserName</option>
+        <option value="phone_number">Phone Number</option>
+        <option value="education_level">Education Level</option>
+        <option value="email">Email</option>
+      </select>
+      
+      <select name="select${fieldIndex}">
+        <option value="">relation</option>
+        <option value=":in:">In</option>
+        <option value=":inn:">Is not null</option>
+        <option value=":eq:">Equal to</option>
+        <option value=":nq:">Not equal</option>
+        <option value=":gt:">Greater than</option>
+        <option value=":gte:">Greater than or equal to</option>
+        <option value=":lt:">Lass than</option>
+        <option value=":lte:">Less than or equal</option>
+        <option value=":bt:">between</option>
+        <option value=":sw:">startwith</option>
+        <option value=":ew:">endswith</option>
+        <option value=":lm:">contains</option>
+      </select>
+
+      <input type="text" name="textfield${fieldIndex}" placeholder="enter value">
+
+      <select name="select${fieldIndex+1}">
+        <option value="">Joiner</option>
+        <option value="%7CAND%7C">AND</option>
+        <option value="%7COR%7C">OR</option>
+        <option value="NULL">NULL</option>
+      </select>
+    `;
+    container.appendChild(fieldDiv);
+
+  
+    adjustSideNavHeight();
+  }
+
+  function deleteFields() {
+    var container = document.getElementById("fieldsContainer");
+    container.removeChild(container.lastChild);
+    fieldIndex--;
+
+    
+    adjustSideNavHeight();
+  }
+
+  function adjustSideNavHeight() {
+    var sidenav = document.getElementById("mySidenav");
+    var fieldsContainer = document.getElementById("fieldsContainer");
+    var height = fieldsContainer.clientHeight + 120; 
+    sidenav.style.height = height + "px";
+  }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('form');
+    const baseURL = "http://172.20.94.28:4100/api/rest/teachers";
+    const pageSizeElement = document.getElementById('page-size');
+    let pageSize = parseInt(pageSizeElement.value);
+
+    function showSpinner() {
+        const spinner = document.getElementById('spinner');
+        const overlay = document.getElementById('overlay');
+        spinner.style.display = 'block';
+        overlay.style.display = 'block';
+    }
+
+    function hideSpinner() {
+        const spinner = document.getElementById('spinner');
+        const overlay = document.getElementById('overlay');
+        spinner.style.display = 'none';
+        overlay.style.display = 'none';
+    }
+
+    function updatePaginationText(page, totalPages, totalRecords) {
+        const paginationText = document.querySelector('.footer span');
+        paginationText.textContent = `showing page ${page} of ${totalPages} pages in ${totalRecords} entries`;
+    }
+
+    function updateTableBody(teachersData) {
+    const tableBody = document.querySelector('#tbody');
+    tableBody.innerHTML = '';
+    
+    
+    let teachers = Array.isArray(teachersData) ? teachersData : [teachersData];
+    
+    teachers.forEach(teacher => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${teacher.first_name || ''}</td>
+            <td>${teacher.last_name || ''}</td>
+            <td>${teacher.tsc_number || ''}</td>
+            <td>${teacher.id_number || ''}</td>
+            <td>${teacher.username || ''}</td>
+            <td>${teacher.phone_number || ''}</td>
+            <td>${teacher.education_level || ''}</td>
+            <td>${teacher.email || ''}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+
+
+    function fetchTeachers(filter) {
+        console.log("Filter string:", filter);
         showSpinner();
+        const page = 1;
+        const url = `${baseURL}?page=${page}&pageSize=${pageSize}&filter=${filter}`;
 
         fetch(url)
             .then(response => response.json())
             .then(data => {
                 const { totalRecords: total, pages, page, data: teachers } = data;
-                totalRecords = total;
-                totalPages = pages;
 
-                updatePaginationText(page, totalPages, totalRecords);
-
-                const tableBody = document.querySelector('#tbody');
-                tableBody.innerHTML = '';
-
-                teachers.forEach(teacher => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${teacher.first_name}</td>
-                        <td>${teacher.last_name}</td>
-                        <td>${teacher.tsc_number}</td>
-                        <td>${teacher.id_number}</td>
-                        <td>${teacher.username}</td>
-                        <td>${teacher.phone_number}</td>
-                        <td>${teacher.education_level}</td>
-                        <td>${teacher.email}</td>
-                    `;
-                    tableBody.appendChild(row);
-                });
+                if (teachers.length === 0) {
+                    alert('No record found');
+                } else {
+                    updatePaginationText(page, pages, total);
+                    updateTableBody(teachers);
+                }
             })
-            .catch(error => console.error('Error fetching data:', error))
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                alert('Data not found');
+            })
             .finally(() => {
                 hideSpinner();
             });
-    });
-   
+    }
 
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const fieldGroups = document.querySelectorAll('.field-group');
+        let filter = '';
+        
+        fieldGroups.forEach((group, index) => {
+            const selects = group.querySelectorAll('select');
+            const textField = group.querySelector('input[type="text"]');
+
+            if (selects[0].value && selects[1].value && textField.value) {
+                filter += `${selects[0].value}${selects[1].value}${textField.value}`;
+                
+                if (index < fieldGroups.length - 1 && selects[2] && selects[2].value) {
+                    filter += `${selects[2].value}`;
+                }
+            }
+        });
+
+        if (filter !== '') {
+            fetchTeachers(filter);
+        } else {
+            alert('Please provide search criteria.');
+        }
+    });
 });
 
-    </script>
+
+    </script> -->
+    <script src="Javascript/dashboard.js"></script>
 </body>
 
 </html>
